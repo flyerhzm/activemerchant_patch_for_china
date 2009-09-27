@@ -1,0 +1,43 @@
+h1. activemerchant_patch_for_china
+
+*Please note! This active_merchant patch is written by nouse.*
+
+This plugin is an active_merchant patch for china online payment platform, now it supports alipay, bill99 and tenpay.
+
+**************************************************************************
+
+h2. Install
+
+install active_merchant plugin first:
+<pre><code>
+script/plugin install git://github.com/Shopify/active_merchant.git
+</code></pre>
+
+then, install activemerchant_patch_for_china plugin:
+<pre><code>
+script/plugin install git://github.com/flyerhzm/activemerchant_patch_for_china.git
+</code></pre>
+
+**************************************************************************
+
+h2. Configuration
+
+define plugin load order in <code>config/environment.rb</code> to promise activemerchant_patch_for_china is loaded after active_merchant.
+<pre><code>
+config.plugins = [:all, :active_merchant, :activemerchant_patch_for_china]
+</code></pre>
+
+define your api key and account
+<pre><code>
+ActiveMerchant::Billing::Integrations::Alipay::KEY
+ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT
+</code></pre>
+
+**************************************************************************
+
+h2. Usage
+
+
+
+
+Copyright (c) 2009 [nouse], released under the MIT license
