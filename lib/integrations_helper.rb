@@ -5,7 +5,7 @@ ActiveMerchant::Billing::Integrations::Helper.class_eval do
     if ![Array, Hash].include?(name.class) and value.nil?
       @fields[name.to_s]
     else
-      origin_add_field
+      origin_add_field(name, value)
     end
   end
 end
