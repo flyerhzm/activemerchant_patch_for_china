@@ -38,6 +38,7 @@ ActiveMerchant::Billing::Integrations::Alipay::EMAIL
 
 h2. Usage
 
+<pre><code>
 <% payment_service_for 'payment order', ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT,
                             :service => :alipay,
                             :html => { :id => 'payment-form', :method => :get } do |service| %>
@@ -54,6 +55,7 @@ h2. Usage
   <% service.sign %>
 <% end %>
 <%= button_to_function "Submit", "document.getElementById('payment-form').submit();" %>
+</code></pre>
 
 **************************************************************************
 
