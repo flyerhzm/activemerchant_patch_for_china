@@ -22,22 +22,38 @@ script/plugin install git://github.com/flyerhzm/activemerchant_patch_for_china.g
 
 h2. Configuration
 
-define plugin load order in <code>config/environment.rb</code> to promise activemerchant_patch_for_china is loaded after active_merchant.
+if you install active_merchant and activemerchant_patch_for_china as rails plugins, then define plugin load order in <code>config/environment.rb</code> to promise activemerchant_patch_for_china is loaded after active_merchant.
 <pre><code>
 config.plugins = [:all, :active_merchant, :activemerchant_patch_for_china]
 </code></pre>
 
-define your api key and account
+define your api key, account and email in development
 <pre><code>
 ActiveMerchant::Billing::Integrations::Alipay::KEY
 ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT
+ActiveMerchant::Billing::Integrations::Alipay::EMAIL
 </code></pre>
 
 **************************************************************************
 
 h2. Usage
 
-
+<% payment_service_for 'payment order', ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT,
+                            :service => :alipay,
+                            :html => { :id => 'payment-form', :method => :get } do |service| %>
+  <% service.amount '0.01' %>
+  <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
+  <% service.notify_url url_for(:only_path => false, :action => 'notify') %>
+  <% service.return_url url_for(:only_path => false, :action => 'done') %>
+  <% service.show_url url_for(:only_path => false, :action => 'show') %>
+  <% service.description 'payment description' %>
+  <% service.charset "utf-8" %>
+  <% service.service "create_direct_pay_by_user" %>
+  <% service.payment_type 1 %>
+  <% service.subject 'payment subject' %>
+  <% service.sign %>
+<% end %>
+<%= button_to_function "Submit", "document.getElementById('payment-form').submit();" %>
 
 **************************************************************************
 
