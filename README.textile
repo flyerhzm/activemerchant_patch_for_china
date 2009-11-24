@@ -8,26 +8,47 @@ This plugin is an active_merchant patch for china online payment platform, now i
 
 h2. Install
 
-install active_merchant plugin first:
+install active_merchant and activemerchant_patch_for_china as plugins:
+
 <pre><code>
 script/plugin install git://github.com/Shopify/active_merchant.git
-</code></pre>
-
-then, install activemerchant_patch_for_china plugin:
-<pre><code>
 script/plugin install git://github.com/flyerhzm/activemerchant_patch_for_china.git
 </code></pre>
+
+install activemerchant and activemerchant_patch_for_china as gems:
+
+<pre><code>
+sudo gem install activemerchant
+sudo gem install activemerchant_patch_for_china
+</code></pre>
+
+
 
 **************************************************************************
 
 h2. Configuration
 
 if you install active_merchant and activemerchant_patch_for_china as rails plugins, then define plugin load order in <code>config/environment.rb</code> to promise activemerchant_patch_for_china is loaded after active_merchant.
+
 <pre><code>
 config.plugins = [:all, :active_merchant, :activemerchant_patch_for_china]
 </code></pre>
 
-define your api key, account and email in development
+if you install activemerchant and activemerchant_patch_for_china as gems, then define in <code>config/environment.rb</code>
+
+<pre><code>
+config.gem "activemerchant", :lib => "active_merchant"
+config.gem "activemerchant_patch_for_china", :lib => false
+
+
+require 'active_merchant'
+require 'active_merchant/billing/integrations/action_view_helper'
+
+ActionView::Base.send(:include, ActiveMerchant::Billing::Integrations::ActionViewHelper)
+</code></pre>
+
+then define your api key, account and email
+
 <pre><code>
 ActiveMerchant::Billing::Integrations::Alipay::KEY
 ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT
@@ -39,7 +60,7 @@ ActiveMerchant::Billing::Integrations::Alipay::EMAIL
 h2. Usage
 
 <pre><code>
-<% payment_service_for 'payment order', ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT,
+<% payment_service_for 'payment code', ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT,
                             :service => :alipay,
                             :html => { :id => 'payment-form', :method => :get } do |service| %>
   <% service.amount '0.01' %>
@@ -56,6 +77,11 @@ h2. Usage
 <% end %>
 <%= button_to_function "Submit", "document.getElementById('payment-form').submit();" %>
 </code></pre>
+
+payment code is the out_trade_no, it must be unique.
+amount is the total_fee.
+payment description is the description of the payment.
+payment subject is the subject of the payment.
 
 **************************************************************************
 
