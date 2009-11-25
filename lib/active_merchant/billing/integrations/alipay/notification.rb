@@ -21,56 +21,90 @@ module ActiveMerchant #:nodoc:
             true
           end
 
-          def order
-            @params["out_trade_no"]
-          end
-
-          def amount
-            @params["total_fee"]
-          end
-
           def message
             @message
           end
 
-          def item_id
-            params['']
+          def notify_id
+            params['notify_id']
+          end
+          
+          def notify_time
+            Time.parse params['notify_time']
           end
 
-          def transaction_id
-            params['']
+          def out_trade_no
+            params['out_trade_no']
           end
 
-          # When was this payment received by the client.
-          def received_at
-            params['']
+          def trade_no
+            params['trade_no']
+          end
+          
+          def payment_type
+            params['payment_type']
+          end
+          
+          def subject
+            params['subject']
+          end
+          
+          def body
+            params['body']
           end
 
-          def payer_email
-            params['']
+          def price
+            params['price']
+          end
+          
+          def quantity
+            params['quantity']
           end
 
-          def receiver_email
-            params['']
+          def total_fee
+            params["total_fee"]
           end
 
-          def security_key
-            params['']
-          end
-
-          # the money amount we received in X.2 decimal.
-          def gross
-            params['']
-          end
-
-          # Was this a test transaction?
-          def test?
-            params[''] == 'test'
-          end
-
-          def status
+          def trade_status
             params['trade_status']
           end
+          
+          def refund_status
+            params['refund_status']
+          end
+          
+          def seller_email
+            params['seller_email']
+          end
+          
+          def seller_id
+            params['seller_id']
+          end
+
+          def buyer_email
+            params['buyer_email']
+          end
+
+          def buyer_id
+            params['buyer_id']
+          end
+          
+          def gmt_create
+            Time.parse params['gmt_create']
+          end
+          
+          def gmt_payment
+            Time.parse params['gmt_payment']
+          end
+          
+          def gmt_close
+            Time.parse params['gmt_close']
+          end
+          
+          def gmt_refund
+            Time.parse params['gmt_reund']
+          end
+          
           private
 
           # Take the posted data and move the relevant data into a hash
