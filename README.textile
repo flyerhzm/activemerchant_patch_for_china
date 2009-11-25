@@ -63,12 +63,14 @@ h2. Usage
 <% payment_service_for 'payment code', ActiveMerchant::Billing::Integrations::Alipay::ACCOUNT,
                             :service => :alipay,
                             :html => { :id => 'payment-form', :method => :get } do |service| %>
-  <% service.amount '0.01' %>
+  <% service.total_fee 0.02 %>
+  <%# service.price 0.01 %>
+  <%# service.quantity 2 %>
   <% service.seller :email => ActiveMerchant::Billing::Integrations::Alipay::EMAIL %>
   <% service.notify_url url_for(:only_path => false, :action => 'notify') %>
   <% service.return_url url_for(:only_path => false, :action => 'done') %>
   <% service.show_url url_for(:only_path => false, :action => 'show') %>
-  <% service.description 'payment description' %>
+  <% service.body 'payment body' %>
   <% service.charset "utf-8" %>
   <% service.service "create_direct_pay_by_user" %>
   <% service.payment_type 1 %>
@@ -78,9 +80,9 @@ h2. Usage
 <%= button_to_function "Submit", "document.getElementById('payment-form').submit();" %>
 </code></pre>
 
-payment code is the out_trade_no, it must be unique.
+*payment code is the out_trade_no, it must be unique.*
 amount is the total_fee.
-payment description is the description of the payment.
+payment body is the body of the payment.
 payment subject is the subject of the payment.
 
 **************************************************************************
