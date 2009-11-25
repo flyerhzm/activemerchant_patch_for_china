@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
      "README.textile",
      "Rakefile",
      "VERSION",
+     "activemerchant_patch_for_china.gemspec",
      "lib/active_merchant/billing/integrations/alipay.rb",
      "lib/active_merchant/billing/integrations/alipay/helper.rb",
      "lib/active_merchant/billing/integrations/alipay/notification.rb",
