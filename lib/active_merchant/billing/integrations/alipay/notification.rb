@@ -9,7 +9,7 @@ module ActiveMerchant #:nodoc:
           include Sign
 
           def complete?
-            if status != "TRADE_FINISHED"
+            if trade_status != "TRADE_FINISHED"
               return false
             end
 
