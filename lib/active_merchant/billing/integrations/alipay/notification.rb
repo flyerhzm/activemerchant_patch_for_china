@@ -24,6 +24,10 @@ module ActiveMerchant #:nodoc:
           def message
             @message
           end
+          
+          def notify_type
+            params['notify_type']
+          end
 
           def notify_id
             params['notify_id']
