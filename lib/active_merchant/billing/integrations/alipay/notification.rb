@@ -24,89 +24,47 @@ module ActiveMerchant #:nodoc:
           def message
             @message
           end
+
+          ['notify_type', 'notify_id', 'out_trade_no', 'trade_no', 'payment_type', 'subject', 'body',
+            'seller_email', 'seller_id', 'buyer_email', 'buyer_id', 'logistics_type', 'logistics_payment',
+            'receive_name', 'receive_address', 'receive_zip', 'receive_phone', 'receive_mobile'].each do |param|
+            self.class_eval <<-EOF
+              def #{param}
+                params['#{param}']
+              end
+            EOF
+          end
           
-          def notify_type
-            params['notify_type']
+          ['price', 'discount', 'quantity', 'total_fee', 'coupon_discount', 'logistics_fee'].each do |param|
+            self.class_eval <<-EOF
+              def #{param}
+                params['#{param}']
+              end
+            EOF
+          end
+          
+          ['trade_status', 'refund_status', 'logistics_status'].each do |param|
+            self.class_eval <<-EOF
+              def #{param}
+                params['#{param}']
+              end
+            EOF
           end
 
-          def notify_id
-            params['notify_id']
-          end
-          
-          def notify_time
-            Time.parse params['notify_time']
-          end
-
-          def out_trade_no
-            params['out_trade_no']
+          ['notify_time', 'gmt_create', 'gmt_payment', 'gmt_close', 'gmt_refund', 'gmt_send_goods', 'gmt_logistics_modify'].each do |param|
+            self.class_eval <<-EOF
+              def #{param}
+                Time.parse params['#{param}']
+              end
+            EOF
           end
 
-          def trade_no
-            params['trade_no']
-          end
-          
-          def payment_type
-            params['payment_type']
-          end
-          
-          def subject
-            params['subject']
-          end
-          
-          def body
-            params['body']
-          end
-
-          def price
-            params['price']
-          end
-          
-          def quantity
-            params['quantity']
-          end
-
-          def total_fee
-            params["total_fee"]
-          end
-
-          def trade_status
-            params['trade_status']
-          end
-          
-          def refund_status
-            params['refund_status']
-          end
-          
-          def seller_email
-            params['seller_email']
-          end
-          
-          def seller_id
-            params['seller_id']
-          end
-
-          def buyer_email
-            params['buyer_email']
-          end
-
-          def buyer_id
-            params['buyer_id']
-          end
-          
-          def gmt_create
-            Time.parse params['gmt_create']
-          end
-          
-          def gmt_payment
-            Time.parse params['gmt_payment']
-          end
-          
-          def gmt_close
-            Time.parse params['gmt_close']
-          end
-          
-          def gmt_refund
-            Time.parse params['gmt_reund']
+          ['use_coupon', 'is_total_fee_adjust'].each do |param|
+            self.class_eval <<-EOF
+              def #{param}?
+                'T' == params['#{param}']
+              end
+            EOF
           end
           
           private

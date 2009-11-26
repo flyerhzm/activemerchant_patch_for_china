@@ -39,7 +39,7 @@ module ActiveMerchant #:nodoc:
           mapping :it_b_pay, 'it_b_pay'
           
           #################################################
-          # create partner trade by buyer or trade create by user
+          # create partner trade by buyer and trade create by user
           #################################################
           mapping :price, 'price'
           mapping :quantity, 'quantity'
