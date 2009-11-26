@@ -45,11 +45,11 @@ module ActiveMerchant #:nodoc:
           mapping :quantity, 'quantity'
           mapping :discount, 'discount'
           ['', '_1', '_2', '_3'].each do |postfix|
-          self.class_eval <<-EOF
+            self.class_eval <<-EOF
             mapping :logistics#{postfix}, :type => 'logistics_type#{postfix}',
                                           :fee => 'logistics_fee#{postfix}',
                                           :payment => 'logistics_payment#{postfix}'
-          EOF
+            EOF
           end
           mapping :receive, :name => 'receive_name',
                             :address => 'receive_address',
