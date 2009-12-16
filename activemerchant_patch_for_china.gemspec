@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{activemerchant_patch_for_china}
-  s.version = "0.1.4"
+  s.version = "0.1.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Richard Huang"]
-  s.date = %q{2009-11-26}
+  s.date = %q{2009-12-16}
   s.description = %q{A rails plugin to add an active_merchant patch for china online payment platform}
   s.email = %q{flyerhzm@gmail.com}
   s.extra_rdoc_files = [
