@@ -9,20 +9,20 @@ module ActiveMerchant #:nodoc:
           include Sign
 
           def complete?
-            if trade_status != "TRADE_FINISHED"
-              return false
-            end
-
-            unless verify_sign
-              @message = "Alipay Error: ILLEGAL_SIGN"
-              return false
-            end
-
-            true
+            trade_status == "TRADE_FINISHED"
+          end
+          
+          def pending?
+            trade_status == 'WAIT_BUYER_PAY'
+          end
+          
+          def status
+            trade_status
           end
 
-          def message
-            @message
+          def acknowledge
+            raise StandardError.new("Faulty alipay result: ILLEGAL_SIGN") unless verify_sign
+            true
           end
 
           ['notify_type', 'notify_id', 'out_trade_no', 'trade_no', 'payment_type', 'subject', 'body',
