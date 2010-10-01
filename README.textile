@@ -47,7 +47,7 @@ ActionView::Base.send(:include, ActiveMerchant::Billing::Integrations::ActionVie
 
 h2. Usage
 
-"Alipay (支付宝)":http://wiki.github.com/flyerhzm/activemerchant_patch_for_china/alipay
+"Alipay (支付宝)":http://github.com/flyerhzm/activemerchant_patch_for_china/wiki/Alipay-(%E6%94%AF%E4%BB%98%E5%AE%9D)
 
 **************************************************************************
 
