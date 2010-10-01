@@ -1,8 +1,6 @@
 h1. activemerchant_patch_for_china
 
-*Please note! This active_merchant patch is written by nouse.*
-
-This plugin is an active_merchant patch for china online payment platform, now it supports alipay (支付宝), 99bill (快钱) and tenpay (财付通).
+This plugin is an active_merchant patch for china online payment platform, now it supports alipay (支付宝), 99bill (快钱), tenpay (财付通), 19pay(捷迅支付) and yeepay(易宝).
 
 **************************************************************************
 
@@ -21,8 +19,6 @@ install activemerchant and activemerchant_patch_for_china as gems:
 sudo gem install activemerchant
 sudo gem install activemerchant_patch_for_china
 </code></pre>
-
-
 
 **************************************************************************
 
@@ -55,5 +51,11 @@ h2. Usage
 
 **************************************************************************
 
+h2. About
 
-Copyright (c) 2009 [nouse], released under the MIT license
+<code>activemerchant_patch_for_china</code> is inspired by "masterwujiang's patch":https://jadedpixel.lighthouseapp.com/projects/11599-active-merchant/tickets/8-patch-additon-integrations-support-alipay-99bill-and-tenpay-all-in-china
+
+**************************************************************************
+
+
+Copyright (c) 2009 - 2010 [Richard Huang], released under the MIT license
