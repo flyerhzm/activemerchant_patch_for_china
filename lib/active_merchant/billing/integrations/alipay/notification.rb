@@ -11,11 +11,11 @@ module ActiveMerchant #:nodoc:
           def complete?
             trade_status == "TRADE_FINISHED"
           end
-          
+
           def pending?
             trade_status == 'WAIT_BUYER_PAY'
           end
-          
+
           def status
             trade_status
           end
@@ -25,7 +25,7 @@ module ActiveMerchant #:nodoc:
             true
           end
 
-          ['notify_type', 'notify_id', 'out_trade_no', 'trade_no', 'payment_type', 'subject', 'body',
+          ['extra_common_param', 'notify_type', 'notify_id', 'out_trade_no', 'trade_no', 'payment_type', 'subject', 'body',
             'seller_email', 'seller_id', 'buyer_email', 'buyer_id', 'logistics_type', 'logistics_payment',
             'receive_name', 'receive_address', 'receive_zip', 'receive_phone', 'receive_mobile'].each do |param|
             self.class_eval <<-EOF
@@ -34,7 +34,7 @@ module ActiveMerchant #:nodoc:
               end
             EOF
           end
-          
+
           ['price', 'discount', 'quantity', 'total_fee', 'coupon_discount', 'logistics_fee'].each do |param|
             self.class_eval <<-EOF
               def #{param}
@@ -42,7 +42,7 @@ module ActiveMerchant #:nodoc:
               end
             EOF
           end
-          
+
           ['trade_status', 'refund_status', 'logistics_status'].each do |param|
             self.class_eval <<-EOF
               def #{param}
@@ -66,7 +66,7 @@ module ActiveMerchant #:nodoc:
               end
             EOF
           end
-          
+
           private
 
           # Take the posted data and move the relevant data into a hash
