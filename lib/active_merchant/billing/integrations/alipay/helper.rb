@@ -9,7 +9,7 @@ module ActiveMerchant #:nodoc:
           CREATE_DIRECT_PAY_BY_USER = 'create_direct_pay_by_user'
           CREATE_PARTNER_TRADE_BY_BUYER = 'create_partner_trade_by_buyer'
           TRADE_CREATE_BY_BUYER = 'trade_create_by_buyer'
-          
+
           ###################################################
           # common
           ###################################################
@@ -28,7 +28,7 @@ module ActiveMerchant #:nodoc:
           mapping :service, 'service'
           mapping :payment_type, 'payment_type'
           mapping :extra_common_param, 'extra_common_param'
-          
+
           #################################################
           # create direct pay by user
           #################################################
@@ -38,7 +38,7 @@ module ActiveMerchant #:nodoc:
           mapping :royalty, :type => 'royalty_type',
                             :parameters => 'royalty_parameters'
           mapping :it_b_pay, 'it_b_pay'
-          
+
           #################################################
           # create partner trade by buyer and trade create by user
           #################################################
@@ -60,7 +60,7 @@ module ActiveMerchant #:nodoc:
           mapping :t_b_pay, 't_b_pay'
           mapping :t_s_send_1, 't_s_send_1'
           mapping :t_s_send_2, 't_s_send_2'
-          
+
           #################################################
           # create partner trade by buyer
           #################################################
@@ -76,6 +76,7 @@ module ActiveMerchant #:nodoc:
                       Digest::MD5.hexdigest((@fields.sort.collect{|s|s[0]+"="+CGI.unescape(s[1])}).join("&")+KEY)
                      )
             add_field('sign_type', 'MD5')
+            nil
           end
 
         end

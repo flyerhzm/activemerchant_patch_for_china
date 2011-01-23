@@ -25,6 +25,7 @@ module ActiveMerchant #:nodoc:
                       Digest::MD5.hexdigest("merchant_id=#{ACCOUNT}&orderid=#{order}&amount=#{amount}&merchant_url=#{return_url}" +
                       "&merchant_key=#{KEY}").upcase
                      )
+            nil
           end
 
         end

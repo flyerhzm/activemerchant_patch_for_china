@@ -29,6 +29,7 @@ module ActiveMerchant #:nodoc:
                       Digest::MD5.hexdigest("cmdno=#{cmdno}&date=#{date}&bargainor_id=#{account}" +
                       "&transaction_id=#{transaction_id}&sp_billno=#{order}&total_fee=#{amount}" +
                       "&fee_type=#{currency}&return_url=#{return_url}&attach=#{attach}&key=#{KEY}"))
+            nil
           end
 
         end
