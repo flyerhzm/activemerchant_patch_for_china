@@ -15,7 +15,7 @@ module ActiveMerchant #:nodoc:
           mapping :channel, 'pd_FrpId'
 
           def initialize(order, account, options = {})
-            super(order, ACCOUNT, options)
+            super(order, account, options)
             add_field('p0_Cmd', 'Buy')
           end
 
