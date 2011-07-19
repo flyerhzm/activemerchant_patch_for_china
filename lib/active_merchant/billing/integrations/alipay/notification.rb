@@ -74,7 +74,7 @@ module ActiveMerchant #:nodoc:
             @raw = post
             for line in post.split('&')
               key, value = *line.scan( %r{^(\w+)\=(.*)$} ).flatten
-              params[key] = value
+              params[key] = CGI.unescape(value || '')
             end
           end
         end
