@@ -9,6 +9,7 @@ module ActiveMerchant #:nodoc:
           CREATE_DIRECT_PAY_BY_USER = 'create_direct_pay_by_user'
           CREATE_PARTNER_TRADE_BY_BUYER = 'create_partner_trade_by_buyer'
           TRADE_CREATE_BY_BUYER = 'trade_create_by_buyer'
+          CREATE_FOREIGN_TRADE = 'create_forex_trade'
 
           ###################################################
           # common
@@ -28,6 +29,7 @@ module ActiveMerchant #:nodoc:
           mapping :service, 'service'
           mapping :payment_type, 'payment_type'
           mapping :extra_common_param, 'extra_common_param'
+          mapping :currency, 'currency'
 
           #################################################
           # create direct pay by user
