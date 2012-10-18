@@ -6,7 +6,7 @@ This plugin is an active_merchant patch for china online payment platform, now i
 
 h2. Donate
 
-"Donatecn":http://donatecn.com
+"Alipay":http://me.alipay.com/flyerhzm
 "Pledgie":http://www.pledgie.com/campaigns/14062
 
 **************************************************************************
@@ -23,8 +23,8 @@ script/plugin install git://github.com/flyerhzm/activemerchant_patch_for_china.g
 install activemerchant and activemerchant_patch_for_china as gems:
 
 <pre><code>
-sudo gem install activemerchant
-sudo gem install activemerchant_patch_for_china
+gem install activemerchant
+gem install activemerchant_patch_for_china
 </code></pre>
 
 **************************************************************************
@@ -65,4 +65,4 @@ h2. About
 **************************************************************************
 
 
-Copyright (c) 2009 - 2010 [Richard Huang], released under the MIT license
+Copyright (c) 2009 - 2012 [Richard Huang], released under the MIT license
