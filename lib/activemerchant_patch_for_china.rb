@@ -1,4 +1,5 @@
 # ActivemerchantPatchForChina
+require 'activemerchant_patch_for_china/version'
 require 'integrations_helper'
 require 'active_merchant/billing/integrations/alipay'
 require 'active_merchant/billing/integrations/bill99'

@@ -1,7 +1,10 @@
-require 'rake'
-require 'rake/testtask'
-require 'rake/rdoctask'
-require 'jeweler'
+$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+require "bundler"
+Bundler.setup
+
+require "rake"
+require "rdoc/task"
+require "rake/testtask"
 
 desc 'Default: run unit tests.'
 task :default => :test
@@ -23,13 +26,21 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-Jeweler::Tasks.new do |gemspec|
-  gemspec.name = "activemerchant_patch_for_china"
-  gemspec.summary = "A rails plugin to add an active_merchant patch for china online payment platform"
-  gemspec.description = "A rails plugin to add an active_merchant patch for china online payment platform"
-  gemspec.email = "flyerhzm@gmail.com"
-  gemspec.homepage = "http://github.com/flyerhzm/activemerchant_patch_for_china"
-  gemspec.authors = ["Richard Huang"]
-  gemspec.add_dependency 'activemerchant', '>= 1.4.2'
+require "activemerchant_patch_for_china/version"
+
+task :build do
+  system "gem build activemerchant_patch_for_china.gemspec"
 end
-Jeweler::GemcutterTasks.new
+
+task :install => :build do
+  system "sudo gem install activemerchant_patch_for_china-#{ActivemerchantPatchForChina::VERSION}.gem"
+end
+
+task :release => :build do
+  puts "Tagging #{ActivemerchantPatchForChina::VERSION}..."
+  system "git tag -a #{ActivemerchantPatchForChina::VERSION} -m 'Tagging #{ActivemerchantPatchForChina::VERSION}'"
+  puts "Pushing to Github..."
+  system "git push --tags"
+  puts "Pushing to rubygems.org..."
+  system "gem push activemerchant_patch_for_china-#{ActivemerchantPatchForChina::VERSION}.gem"
+end
