@@ -8,7 +8,7 @@ module ActiveMerchant #:nodoc:
       module Alipay
 
         mattr_accessor :service_url
-        self.service_url = 'https://www.alipay.com/cooperate/gateway.do'
+        self.service_url = 'https://mapi.alipay.com/gateway.do'
 
         def self.notification(post)
           Notification.new(post)
