@@ -81,6 +81,9 @@ module ActiveMerchant #:nodoc:
             nil
           end
 
+          def form_method
+            "GET"
+          end
         end
       end
     end
