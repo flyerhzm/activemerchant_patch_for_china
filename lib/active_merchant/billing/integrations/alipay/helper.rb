@@ -82,7 +82,7 @@ module ActiveMerchant #:nodoc:
           end
 
           def form_method
-            "GET"
+            "POST"
           end
         end
       end
